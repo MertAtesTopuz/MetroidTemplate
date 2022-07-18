@@ -49,15 +49,14 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // burası temel hareket kodu
-        float moveInput = Input.GetAxis("Horizontal");
+        float moveInput = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveInput * Speed, rb.velocity.y);
-        moveInput1 = Input.GetAxisRaw("Horizontal");  // horizontal inputunu sadece sağ ve sol okları kullanabilecek şekilde değiştirdim
+        moveInput1 = Input.GetAxisRaw("Horizontal"); 
         animator.SetFloat("Speed", Mathf.Abs(moveInput));
 
         if (faceRight == true && moveInput < 0)
         {
-            Flip(); // hangi tuşa basıldığını kontrol ederek basılan tuşa göre karakterşn yönünü ayarlıyor
+            Flip();
         }
         else if (faceRight == false && moveInput > 0)
         {
